@@ -24,12 +24,13 @@
 1. 文件目录/笔记目录
 	1. Waypoint
 	2. floating toc
-2. 画板
+2. git
+3. 画板
 	1. 官方白板
 	2. Excalidraw
-3. 编辑
+4. 编辑
 	1. outliner
 	2. templater
-4. 美观
+5. 美观
 	1. hide
 	2. style setting
