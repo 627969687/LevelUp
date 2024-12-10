@@ -1,7 +1,9 @@
 # 1.基本使用
 ** KVO：Key Value Observing，键值监听 **
 1. 添加监听
-2. 
+2. observer回调方法里do something
+3. 移除监听
+	1. 添加多少个需要移除多少个
 
 
 |     |     |     |
