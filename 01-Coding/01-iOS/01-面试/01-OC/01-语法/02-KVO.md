@@ -1,5 +1,13 @@
 # 1.基本使用
-KVO：Key Value Observing，键值监听
+** KVO：Key Value Observing，键值监听 **
+1. 添加监听
+2. 
+
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+
 ```objc
 **@interface** Person : NSObject
 **@property** (**assign**, **nonatomic**) **int** age;
