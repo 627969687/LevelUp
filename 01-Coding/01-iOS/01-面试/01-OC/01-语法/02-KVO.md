@@ -1,14 +1,16 @@
 # 1.基本使用
 ** KVO：Key Value Observing，键值监听 **
-1. 添加监听
+1. 添加监听（监听的键值一致、参数一致都不会被替换，**添加多少次就要移除多少次**）
 2. observer回调方法里do something
 3. 移除监听
 	1. 添加多少个需要移除多少个
 
-
-|     |     |     |
-| --- | --- | --- |
-|     |     |     |
+| **NSKeyValueObservingOptions**   | **监听选项** |
+| -------------------------------- | -------- |
+| NSKeyValueObservingOptionNew     | 新值       |
+| NSKeyValueObservingOptionOld     | 旧值       |
+| NSKeyValueObservingOptionInitial |          |
+| NSKeyValueObservingOptionPrior   |          |
 
 ```objc
 **@interface** Person : NSObject
