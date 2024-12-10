@@ -57,6 +57,7 @@
 ```
 
 # 2.本质
-
-
-# 3.调用流程
+![KVO1.jpg](https://raw.githubusercontent.com/627969687/LevelUp/main/resource/202412110157016.jpg)
+通过拦截并生成新的类对象方式完成监听：
+1. 在原本实例对象的isa指向类对象的过程中
+2. runtime构建了一个KVO的中间类，修改实例对象isa的指向为指向自己
