@@ -5,12 +5,20 @@
 3. 移除监听
 	1. 添加多少个需要移除多少个
 
-| **NSKeyValueObservingOptions**   | **监听选项** |
-| -------------------------------- | -------- |
-| NSKeyValueObservingOptionNew     | 新值       |
-| NSKeyValueObservingOptionOld     | 旧值       |
-| NSKeyValueObservingOptionInitial |          |
-| NSKeyValueObservingOptionPrior   |          |
+<br>
+
+`addObserver:forKeyPath:options:context:`的一些参数
+1. observer：监听者
+2. keyPath：键值
+3. context：上下文指针，空类型指针（无法修改，作为一些只读的各种类型数据使用）
+4. options：监听选项
+
+| **NSKeyValueObservingOptions**   | **监听选项**                                                  |
+| -------------------------------- | --------------------------------------------------------- |
+| NSKeyValueObservingOptionNew     | 新值                                                        |
+| NSKeyValueObservingOptionOld     | 旧值                                                        |
+| NSKeyValueObservingOptionInitial | 添加监听之后立即发送一次消息                                            |
+| NSKeyValueObservingOptionPrior   | 监听的键值发生修改前预先发送一次消息，加上`willChangeValueForKey:`就是每次修改发送两次消息 |
 
 ```objc
 **@interface** Person : NSObject
