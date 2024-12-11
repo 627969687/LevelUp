@@ -1,5 +1,5 @@
 # 1.基本使用
-** KVO：Key Value Observing，键值监听 **
+**KVO：Key Value Observing，键值监听**
 1. 添加监听（监听的键值一致、参数一致都不会被替换，**添加多少次就要移除多少次**）
 2. observer回调方法里do something
 3. 移除监听
@@ -57,7 +57,13 @@
 ```
 
 # 2.本质
+# 2.1 被修改的指向
 ![KVO1.jpg](https://raw.githubusercontent.com/627969687/LevelUp/main/resource/202412110157016.jpg)
 通过拦截并生成新的类对象方式完成监听：
 1. 在原本实例对象的isa指向类对象的过程中
 2. runtime构建了一个KVO的中间类，修改实例对象isa的指向为指向自己
+# 2.2 NSKVONotifying_xxx的内部
+1. 通过重写`setAge:`添加`Foundation`框架的`_NSSetObjectValueAndNotify`方法完成监听
+	1. 通过通知的方式完成监听
+2. 通过重写`class`防止`NSKVONotifying_xxx`这个真正的类被暴露
+	1. 该类是通过`runtime`动态插入并且没有被暴露的意义
