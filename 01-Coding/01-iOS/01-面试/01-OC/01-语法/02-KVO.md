@@ -1,5 +1,5 @@
 # 1. 基本使用
-**KVO：Key Value Observing，键值监听**
+## 1.1 **KVO：Key Value Observing，键值监听**
 1. 添加监听（监听的键值一致、参数一致都不会被替换，**添加多少次就要移除多少次**）
 2. observer回调方法里do something
 3. 移除监听
@@ -7,7 +7,7 @@
 
 <br>
 
-`addObserver:forKeyPath:options:context:`的一些参数
+## 1.2 关于`addObserver:forKeyPath:options:context:`的一些参数
 1. observer：监听者
 2. keyPath：键值
 3. context：上下文指针，空类型指针（无法修改，作为一些只读的各种类型数据使用）
@@ -19,7 +19,7 @@
 | NSKeyValueObservingOptionOld     | 旧值                                                        |
 | NSKeyValueObservingOptionInitial | 添加监听之后立即发送一次消息                                            |
 | NSKeyValueObservingOptionPrior   | 监听的键值发生修改前预先发送一次消息，加上`willChangeValueForKey:`就是每次修改发送两次消息 |
-
+## 1.3 使用案例
 ```objc
 **@interface** Person : NSObject
 **@property** (**assign**, **nonatomic**) **int** age;
@@ -57,12 +57,13 @@
 ```
 
 # 2. 本质
-# 2.1 被修改的指向
+## 2.1 被修改的指向
 ![KVO1.jpg](https://raw.githubusercontent.com/627969687/LevelUp/main/resource/202412110157016.jpg)
 通过拦截并生成新的类对象方式完成监听：
 1. 在原本实例对象的isa指向类对象的过程中
 2. runtime构建了一个KVO的中间类，修改实例对象isa的指向为指向自己
-# 2.2 NSKVONotifying_XXX的内部
+## 2.2 NSKVONotifying_XXX的内部
+![KVO2.jpg](https://raw.githubusercontent.com/627969687/LevelUp/main/resource/202412120159143.jpg)
 
 | **_NSSetXXXValueAndNotify** | 内部实现                                                               |
 | --------------------------- | ------------------------------------------------------------------ |
@@ -77,7 +78,7 @@
 3. 通过重写`dealloc`处理KVO自己的内存释放
 4. 增加`_isKVOA`
 
-# 2.3 手动触发KVO
+## 2.3 手动触发KVO
 手动触发KVO的方法：
 1. 调用`willChangeValueForKey`记录旧的值
 2. 调用`didChangeValueForKey`触发`observeValueForKeyPath:ofObject:change:context:`并把旧的值和新的值（当前值）返回给监听者
