@@ -76,7 +76,7 @@
 2. 通过重写`class`防止`NSKVONotifying_XXX`这个真正的类被暴露
 	1. 该类是通过`runtime`动态插入并且没有被暴露的意义
 3. 通过重写`dealloc`处理KVO自己的内存释放
-4. 增加`_isKVOA`
+4. 增加`_isKVOA`，标记是否是KVO
 
 ## 2.3 手动触发KVO
 手动触发KVO的方法：
