@@ -1,4 +1,4 @@
-# 1.基本使用
+# 1. 基本使用
 **KVO：Key Value Observing，键值监听**
 1. 添加监听（监听的键值一致、参数一致都不会被替换，**添加多少次就要移除多少次**）
 2. observer回调方法里do something
@@ -56,7 +56,7 @@
 }
 ```
 
-# 2.本质
+# 2. 本质
 # 2.1 被修改的指向
 ![KVO1.jpg](https://raw.githubusercontent.com/627969687/LevelUp/main/resource/202412110157016.jpg)
 通过拦截并生成新的类对象方式完成监听：
@@ -67,7 +67,7 @@
 | **_NSSetObjectValueAndNotify** | 内部实现                                                               |
 | ------------------------------ | ------------------------------------------------------------------ |
 | 调用`willChangeValueForKey:`     | 记录了旧的值                                                             |
-| 调用原来的set方法                     |                                                                    |
+| 调用原来的setter方法                  |                                                                    |
 | 调用`didChangeValueForKey:`      | 调用`observeValueForKeyPath:ofObject:change:context:`方法告诉监听者属性值发生改变。 |
 
 1. 通过重写`setAge:`添加`Foundation`框架的`_NSSetObjectValueAndNotify`方法完成监听
