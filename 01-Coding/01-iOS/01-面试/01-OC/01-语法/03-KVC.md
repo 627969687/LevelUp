@@ -47,7 +47,7 @@ int studentAge = [teacher valueForKey:@"student.age"];
 ```mermaid
 graph TD
 
-findFunc(按序查找方法\n1. setKey:\n2. _seyKey:)
+findFunc(按序查找方法<br>1. setKey:\n2. _seyKey:)
 setValue(赋值)
 checkVariablesDirectly(查看返回值\naccessInstanceVariablesDirectly)
 findVariablesDirectly(按序查找成员变量\n 1. _key\n2. _isKey\n3. key\n4. isKey)
