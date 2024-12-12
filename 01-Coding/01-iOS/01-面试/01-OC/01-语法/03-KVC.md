@@ -62,6 +62,11 @@ checkVariablesDirectly --false--> undefinedKey
 findVariablesDirectly --false--> undefinedKey
 ```
 
+```anyblock
+[list2mermaid]
+- 123
+	- 1
+```
 
 
 # 3. `valueForKey:`的原理 
