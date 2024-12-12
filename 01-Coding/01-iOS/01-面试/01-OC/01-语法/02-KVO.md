@@ -79,7 +79,7 @@
 4. 增加`_isKVOA`，标记是否是KVO
 
 ## 2.3 手动触发KVO
-手动触发KVO的方法：
 1. 调用`willChangeValueForKey`记录旧的值
 2. 调用`didChangeValueForKey`触发`observeValueForKeyPath:ofObject:change:context:`并把旧的值和新的值（当前值）返回给监听者
+
 注：所以手动触发`observeValueForKeyPath:ofObject:change:context:`该方法前提就是获取旧的值和新的值（当前值）。由于不需要调用setter方法，所以这里旧的值等于新的值（当前值）。
