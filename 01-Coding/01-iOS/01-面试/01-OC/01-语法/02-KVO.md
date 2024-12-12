@@ -7,12 +7,6 @@
     1. 注册注销在一条线程上
     2. 回调与属性改变在一条线程上
 
-基本使用：
-1. 添加监听（监听的键值一致、参数一致都不会被替换，**添加多少次就要移除多少次**）
-2. observer回调方法里do something
-3. 移除监听
-	1. 添加多少个需要移除多少个
-
 ## 1.2 关于`addObserver:forKeyPath:options:context:`的一些参数
 1. observer：监听者
 2. keyPath：键值
@@ -26,6 +20,11 @@
 | NSKeyValueObservingOptionInitial | 添加监听之后立即发送一次消息                                            |
 | NSKeyValueObservingOptionPrior   | 监听的键值发生修改前预先发送一次消息，加上`willChangeValueForKey:`就是每次修改发送两次消息 |
 ## 1.3 使用案例
+基本使用：
+1. 添加监听（监听的键值一致、参数一致都不会被替换，**添加多少次就要移除多少次**）
+2. observer回调方法里do something
+3. 移除监听
+	1. 添加多少个需要移除多少个
 ```objc
 **@interface** Person : NSObject
 **@property** (**assign**, **nonatomic**) **int** age;
