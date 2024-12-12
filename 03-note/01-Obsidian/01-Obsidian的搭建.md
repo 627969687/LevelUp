@@ -31,6 +31,7 @@
 4. 编辑
 	1. outliner
 	2. templater
+	3. editing toolbar
 5. 美观
 	1. hide
 	2. style setting

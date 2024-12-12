@@ -47,10 +47,10 @@ int studentAge = [teacher valueForKey:@"student.age"];
 ```mermaid
 graph TD
 
-findFunc(按序查找方法<br>1. setKey:<br>2. _seyKey:)
+findFunc(按序查找方法<br><p align="left">1. setKey:<br>2. _seyKey:</p>)
 setValue(赋值)
 checkVariablesDirectly(查看返回值<br>accessInstanceVariablesDirectly)
-findVariablesDirectly(按序查找成员变量<br>1. _key<br>2. _isKey<br>3. key<br>4. isKey)
+findVariablesDirectly(按序查找成员变量<br><p align="left">1. _key<br>2. _isKey<br>3. key<br>4. isKey</p>)
 undefinedKey(调用setValue:forUndefinedKey:<br>并抛出异常NSUnknownKeyException)
 
 setValue:forKey: --> findFunc
