@@ -49,7 +49,7 @@ graph TD
 
 findFunc(按序查找方法<br>1. setKey:<br>2. _seyKey:)
 setValue(赋值)
-checkVariablesDirectly(查看返回值\naccessInstanceVariablesDirectly)
+checkVariablesDirectly(查看返回值<br>accessInstanceVariablesDirectly)
 findVariablesDirectly(按序查找成员变量<br>1. _key<br>2. _isKey<br>3. key<br>4. isKey)
 undefinedKey(调用setValue:forUndefinedKey:<br>并抛出异常NSUnknownKeyException)
 

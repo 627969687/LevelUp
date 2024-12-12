@@ -34,3 +34,4 @@
 5. 美观
 	1. hide
 	2. style setting
+	3. Explorer Note Count
