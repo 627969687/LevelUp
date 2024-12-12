@@ -46,11 +46,12 @@ int studentAge = [teacher valueForKey:@"student.age"];
 # 2. `setValue:forKey:`的原理
 ```mermaid
 graph TD
-	setValue:forKey --> one
-	subgraph one
-	1.setKey:
-	2._setKey:
-	end
+
+findFunc(按序查找方法\n1. setKey:\n2. _seyKey:)
+setValue(赋值)
+
+setValue:forKey: --> findFunc
+findFunc --> setValue
 ```
 
 
