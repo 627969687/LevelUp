@@ -44,7 +44,7 @@ int studentAge = [teacher valueForKey:@"student.age"];
 3. 键值编码和键值监听，名字可看出
 
 # 2. `setValue:forKey:`的原理
-
-
+graph TD
+	A --> B
 
 # 3. `valueForKey:`的原理 
