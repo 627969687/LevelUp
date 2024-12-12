@@ -1,11 +1,17 @@
 # 1. 基本使用
 ## 1.1 **KVO：Key Value Observing，键值监听**
+优劣：
+1. 一对多的通信
+2. 只适用于继承NSObject的类，需要实现setter方法
+3. 需自行确保线程安全
+    1. 注册注销在一条线程上
+    2. 回调与属性改变在一条线程上
+
+基本使用：
 1. 添加监听（监听的键值一致、参数一致都不会被替换，**添加多少次就要移除多少次**）
 2. observer回调方法里do something
 3. 移除监听
 	1. 添加多少个需要移除多少个
-
-<br>
 
 ## 1.2 关于`addObserver:forKeyPath:options:context:`的一些参数
 1. observer：监听者
