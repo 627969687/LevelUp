@@ -62,9 +62,16 @@ findVariablesDirectly --true--> setValue
 checkVariablesDirectly --false--> undefinedKey
 findVariablesDirectly --false--> undefinedKey
 ```
-
+1. 按序查找方法setKey、_setKey
+	1. 找到赋值
+	2. 找不到，调用accessInstanceVariablesDirectly查看是否有成员变量
+		1. 返回true，按序查找成员变量_key、_isKey、key、isKey
+			1. 找到赋值
+			2. 找不到，调用方法setValue:forUndefinedKey:并抛出异常NSUnknownKeyException
+		2. 返回false，调用方法setValue:forUndefinedKey:并抛出异常NSUnknownKeyException
 
 
 
 
 # 3. `valueForKey:`的原理 
+1. 
