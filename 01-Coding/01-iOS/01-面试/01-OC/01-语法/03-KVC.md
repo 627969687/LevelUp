@@ -39,7 +39,7 @@ int studentAge = [teacher valueForKey:@"student.age"];
 ```
 
 ## 1.3 KVC可触发KVO
-1. KVC内部调用了setter方法
+1. ==KVC==内部调用了==setter==方法
 2. 即使对象没有实现setter方法，KVC底层也做了处理，也是通过KVO的两个API触发
 	1. `willChangeValueForKey`和`didChangeValueForKey`
 	2. 中间的setter方法可由KVC下的其他方式代替（_setKey:、_key、_isKey、key、isKey）
