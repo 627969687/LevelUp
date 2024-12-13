@@ -13,7 +13,9 @@
 - (nullable id)valueForKeyPath:(NSString *)keyPath;
 ```
 
-| 参数说明    |                           |
+| 参数说明    |                           |flowchart LR
+Start --> Stop
+
 | ------- | ------------------------- |
 | value   | id类型的值                    |
 | key     |                           |
@@ -76,11 +78,28 @@ findVariablesDirectly --false--> undefinedKey
 
 
 # 3. `valueForKey:`的原理 
+```mermaid
+flowchart TD
+findFunc(按序查找方法<br><p align="left">1.getKey:<br>2.key:<br>3.isKey<br>4._key</p>)
+returnValue(返回对应的value)
+checkVariablesDirectly(查看返回值<br>accessInstanceVariablesDirectly)
+findVariablesDirectly(按序查找成员变量<br><p align="left">1. _key<br>2. _isKey<br>3. key<br>4. isKey</p>)
+undefinedKey(调用valueforUndefinedKey:<br>并抛出异常NSUnknownKeyException)
 
-1. 按序查找方法getKey、key、isKey、_key
-	1. 找到，返回对应的value
+valueforKey: --> findFunc
+findFunc --true--> returnValue
+findFunc --false--> checkVariablesDirectly
+checkVariablesDirectly --true--> findVariablesDirectly
+findVariablesDirectly --true--> returnValue
+checkVariablesDirectly --false--> undefinedKey
+findVariablesDirectly --false--> undefinedKey
+```
+
+
+1. 按序查找方法<mark style="background: #BBFABBA6;">getKey、key、isKey、_key</mark>
+	1. 找到，返回对应的<mark style="background: #BBFABBA6;">value</mark>
 	2. 找不到，调用`accessInstanceVariablesDirectly`查看是否有成员变量
-		1. 返回true，按序查找成员变量_key、_isKey、key、isKey
-			1. 找到，返回对应的value
+		1. 返回true，按序查找成员变量<mark style="background: #BBFABBA6;">_key、_isKey、key、isKey</mark>
+			1. 找到，返回对应的<mark style="background: #BBFABBA6;">value</mark>
 			2. 找不到，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
 		2. 返回false，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
