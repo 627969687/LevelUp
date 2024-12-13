@@ -13,13 +13,6 @@
 - (nullable id)valueForKeyPath:(NSString *)keyPath;
 ```
 
-| 参数说明    |                           |flowchart LR
-Start --> Stop
-
-| ------- | ------------------------- |
-| value   | id类型的值                    |
-| key     |                           |
-| keyPath | 如果有个属性是对象，要找该对象下的属性可调用该方法 |
 ## 1.2 案例
 ```objc
 @interface Student : NSObject
@@ -41,10 +34,10 @@ int studentAge = [teacher valueForKey:@"student.age"];
 ```
 
 ## 1.3 KVC可触发KVO
-1. KVC内部调用了setter方法
-2. 即使对象没有实现setter方法，KVC底层也做了处理，也是通过KVO的两个API触发
+1. <mark style="background: #BBFABBA6;">KVC</mark>内部调用了<mark style="background: #BBFABBA6;">setter</mark>方法
+2. 即使对象没有实现<mark style="background: #BBFABBA6;">setter</mark>方法，<mark style="background: #BBFABBA6;">KVC</mark>底层也做了处理，也是通过<mark style="background: #BBFABBA6;">KVO</mark>的两个API触发
 	1. `willChangeValueForKey`和`didChangeValueForKey`
-	2. 中间的setter方法可由KVC下的其他方式代替（_setKey:、_key、_isKey、key、isKey）
+	2. 中间的<mark style="background: #BBFABBA6;">setter</mark>方法可由KVC下的其他方式代替（<mark style="background: #BBFABBA6;">_setKey:、_key、_isKey、key、isKey</mark>）
 3. 键值编码和键值监听，名字可看出
 
 # 2. `setValue:forKey:`的原理
@@ -66,13 +59,13 @@ findVariablesDirectly --true--> setValue
 checkVariablesDirectly --false--> undefinedKey
 findVariablesDirectly --false--> undefinedKey
 ```
-1. 按序查找方法setKey、_setKey
+1. 按序查找方法<mark style="background: #BBFABBA6;">setKey、_setKey</mark>
 	1. 找到赋值
 	2. 找不到，调用`accessInstanceVariablesDirectly`查看是否有成员变量
-		1. 返回true，按序查找成员变量_key、_isKey、key、isKey
+		1. 返回<mark style="background: #BBFABBA6;">true</mark>，按序查找成员变量<mark style="background: #BBFABBA6;">_key、_isKey、key、isKey</mark>
 			1. 找到赋值
 			2. 找不到，调用方法`setValue:forUndefinedKey:`并抛出异常`NSUnknownKeyException`
-		2. 返回false，调用方法`setValue:forUndefinedKey:`并抛出异常`NSUnknownKeyException`
+		2. 返回<mark style="background: #BBFABBA6;">false</mark>，调用方法`setValue:forUndefinedKey:`并抛出异常`NSUnknownKeyException`
 
 
 
