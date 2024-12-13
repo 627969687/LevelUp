@@ -92,7 +92,7 @@
 # 3. crash
 ## 3.1 常见崩溃
 1. KVO添加移除次数不匹配
-2. 1. 被观察者提前被释放，被观察者在 dealloc 时仍然注册着 KVO，导致崩溃。 例如：被观察者是局部变量的情况（iOS 10 及之前会崩溃）。
+2. 被观察者提前被释放，被观察者在 dealloc 时仍然注册着 KVO，导致崩溃。 例如：被观察者是局部变量的情况（iOS 10 及之前会崩溃）。
 3. 添加了观察者，但未实现 `observeValueForKeyPath:ofObject:change:context:` 方法，导致崩溃。
 4. 添加或者移除时 `keypath == nil`，导致崩溃。
 

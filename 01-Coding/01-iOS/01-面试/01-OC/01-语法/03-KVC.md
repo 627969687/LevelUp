@@ -98,13 +98,9 @@ findVariablesDirectly --false--> undefinedKey
 		2. 返回false，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
 
 # 5. crash
-## 5.1 常见崩溃
-1. 没有这个key、keyPath
-2. key为nil
-3. value不是属性时为nil
 
-## 5.2 防护
-1. 重写`setValue: forUndefinedKey:`和`valueForUndefinedKey:` 
-2. key为nil导致的问题，只需要交换系统的`setValue:forKey:`
-3. value为nil导致的问题，需要重写系统的`setNilValueForKey:
-
+| 常见崩溃                                                        | 防护                                                     |
+| ----------------------------------------------------------- | ------------------------------------------------------ |
+| 没有这个<mark style="background: #BBFABBA6;">key、keyPath</mark> | 重写`setValue: forUndefinedKey:`和`valueForUndefinedKey:` |
+| key为nil                                                     | 交换系统的`setValue:forKey:`                                |
+| key不是对象时，value为nil                                          | 重写系统的`setNilValueForKey:                               |
