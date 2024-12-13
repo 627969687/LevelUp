@@ -101,4 +101,6 @@
 2. 然后利用 KVOProxy 对象对添加、移除、观察方法进行分发处理；
 3. 在分类中自定义了 dealloc 的实现，移除了多余的观察者；
 
+参考第三方库： [ValiantCat/XXShield](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FValiantCat%2FXXShield "https://github.com/ValiantCat/XXShield")
+
   
