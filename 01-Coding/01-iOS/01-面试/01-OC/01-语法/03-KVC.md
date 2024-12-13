@@ -33,14 +33,14 @@ int teacherAge = [teacher valueForKey:@"age"];
 int studentAge = [teacher valueForKey:@"student.age"];
 ```
 
-## 1.3 KVC可触发KVO
+# 2. KVC可触发KVO
 1. <mark style="background: #BBFABBA6;">KVC</mark>内部调用了<mark style="background: #BBFABBA6;">setter</mark>方法
 2. 即使对象没有实现<mark style="background: #BBFABBA6;">setter</mark>方法，<mark style="background: #BBFABBA6;">KVC</mark>底层也做了处理，也是通过<mark style="background: #BBFABBA6;">KVO</mark>的两个API触发
 	1. `willChangeValueForKey`和`didChangeValueForKey`
 	2. 中间的<mark style="background: #BBFABBA6;">setter</mark>方法可由KVC下的其他方式代替（<mark style="background: #BBFABBA6;">_setKey:、_key、_isKey、key、isKey</mark>）
 3. 键值编码和键值监听，名字可看出
 
-# 2. `setValue:forKey:`的原理
+# 3. `setValue:forKey:`的原理
 
 ```mermaid
 graph TD
@@ -70,7 +70,7 @@ findVariablesDirectly --false--> undefinedKey
 
 
 
-# 3. `valueForKey:`的原理 
+# 4. `valueForKey:`的原理 
 ```mermaid
 flowchart TD
 findFunc(按序查找方法<br><p align="left">1.getKey:<br>2.key:<br>3.isKey<br>4._key</p>)
@@ -97,13 +97,13 @@ findVariablesDirectly --false--> undefinedKey
 			2. 找不到，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
 		2. 返回false，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
 
-# 4. crash
-## 4.1 常见崩溃
+# 5. crash
+## 5.1 常见崩溃
 1. 没有这个key、keyPath
 2. key为nil
 3. value不是属性时为nil
 
-## 4.2 解决方案
+## 5.2 防护
 1. 重写`setValue: forUndefinedKey:`和`valueForUndefinedKey:` 
 2. key为nil导致的问题，只需要交换系统的`setValue:forKey:`
 3. value为nil导致的问题，需要重写系统的`setNilValueForKey:

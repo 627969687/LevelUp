@@ -8,7 +8,7 @@
     2. 回调与属性改变在一条线程上
 
 ## 1.2 关于`addObserver:forKeyPath:options:context:`的一些参数
-1. observer：监听者
+1. observer：观察者
 2. keyPath：键值
 3. context：上下文指针，空类型指针（无法修改，作为一些只读的各种类型数据使用）
 4. options：监听选项
@@ -88,3 +88,17 @@
 2. 调用`didChangeValueForKey`触发`observeValueForKeyPath:ofObject:change:context:`并把旧的值和新的值（当前值）返回给监听者
 
 注：所以手动触发`observeValueForKeyPath:ofObject:change:context:`该方法前提就是获取旧的值和新的值（当前值）。由于不需要调用setter方法，所以这里旧的值等于新的值（当前值）。
+
+# 3. crash
+## 3.1 常见崩溃
+1. KVO添加移除次数不匹配
+2. 1. 被观察者提前被释放，被观察者在 dealloc 时仍然注册着 KVO，导致崩溃。 例如：被观察者是局部变量的情况（iOS 10 及之前会崩溃）。
+3. 添加了观察者，但未实现 `observeValueForKeyPath:ofObject:change:context:` 方法，导致崩溃。
+4. 添加或者移除时 `keypath == nil`，导致崩溃。
+
+## 3.2 防护
+1. 创建一个KVOProxy对象，在对象中使用{keypath : observer1, observer2 , ...} 结构的关系哈希表进行 observer、keyPath 之间的维护；
+2. 然后利用 KVOProxy 对象对添加、移除、观察方法进行分发处理；
+3. 在分类中自定义了 dealloc 的实现，移除了多余的观察者；
+
+  
