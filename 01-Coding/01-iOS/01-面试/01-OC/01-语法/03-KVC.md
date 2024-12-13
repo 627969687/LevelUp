@@ -106,5 +106,5 @@ findVariablesDirectly --false--> undefinedKey
 ## 4.2 解决方案
 1. 重写`setValue: forUndefinedKey:`和`valueForUndefinedKey:` 
 2. key为nil导致的问题，只需要交换系统的`setValue:forKey:`
-3. value 为 nil导致的问题，需要重写系统的`setNilValueForKey:
+3. value为nil导致的问题，需要重写系统的`setNilValueForKey:
 
