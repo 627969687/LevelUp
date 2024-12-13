@@ -39,7 +39,7 @@ int studentAge = [teacher valueForKey:@"student.age"];
 ```
 
 ## 1.3 KVC可触发KVO
-1. <span style="background:rgba(240, 167, 216, 0.55)">KVC</span>内部调用了setter方法
+1. KVC内部调用了setter方法
 2. 即使对象没有实现setter方法，KVC底层也做了处理，也是通过KVO的两个API触发
 	1. `willChangeValueForKey`和`didChangeValueForKey`
 	2. 中间的setter方法可由KVC下的其他方式代替（_setKey:、_key、_isKey、key、isKey）
@@ -76,4 +76,11 @@ findVariablesDirectly --false--> undefinedKey
 
 
 # 3. `valueForKey:`的原理 
-1. 按序查找方法
+
+1. 按序查找方法getKey、key、isKey、_key
+	1. 找到，返回对应的value
+	2. 找不到，调用`accessInstanceVariablesDirectly`查看是否有成员变量
+		1. 返回true，按序查找成员变量_key、_isKey、key、isKey
+			1. 找到，返回对应的value
+			2. 找不到，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
+		2. 返回false，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
