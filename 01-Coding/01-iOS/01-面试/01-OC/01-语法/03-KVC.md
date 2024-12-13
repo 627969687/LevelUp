@@ -96,3 +96,15 @@ findVariablesDirectly --false--> undefinedKey
 			1. 找到，返回对应的<mark style="background: #BBFABBA6;">value</mark>
 			2. 找不到，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
 		2. 返回false，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
+
+# 4. crash
+## 4.1 常见崩溃
+1. 没有这个key、keyPath
+2. key为nil
+3. value不是属性时为nil
+
+## 4.2 解决方案
+1. 重写`setValue: forUndefinedKey:`和`valueForUndefinedKey:` 
+2. key为nil导致的问题，只需要交换系统的`setValue:forKey:`
+3. value 为 nil导致的问题，需要重写系统的`setNilValueForKey:
+
