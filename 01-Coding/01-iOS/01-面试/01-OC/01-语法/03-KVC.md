@@ -92,7 +92,7 @@ findVariablesDirectly --false--> undefinedKey
 1. 按序查找方法<mark style="background: #BBFABBA6;">getKey、key、isKey、_key</mark>
 	1. 找到，返回对应的<mark style="background: #BBFABBA6;">value</mark>
 	2. 找不到，调用`accessInstanceVariablesDirectly`查看是否有成员变量
-		1. 返回true，按序查找成员变量<mark style="background: #BBFABBA6;">_key、_isKey、key、isKey</mark>
+		1. 返回<mark style="background: #BBFABBA6;">true</mark>，按序查找成员变量<mark style="background: #BBFABBA6;">_key、_isKey、key、isKey</mark>
 			1. 找到，返回对应的<mark style="background: #BBFABBA6;">value</mark>
 			2. 找不到，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
 		2. 返回false，调用方法`valueForUndefinedKey:`并抛出异常`NSUnknownKeyException`
@@ -103,4 +103,4 @@ findVariablesDirectly --false--> undefinedKey
 | ----------------------------------------------------------- | ------------------------------------------------------ |
 | 没有这个<mark style="background: #BBFABBA6;">key、keyPath</mark> | 重写`setValue: forUndefinedKey:`和`valueForUndefinedKey:` |
 | key为nil                                                     | 交换系统的`setValue:forKey:`                                |
-| key不是对象时，value为nil                                          | 重写系统的`setNilValueForKey:                               |
+| key不是对象时，value为nil                                          | 重写系统的`setNilValueForKey:`                              |
