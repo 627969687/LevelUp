@@ -41,11 +41,11 @@ int(^testBlock)(int, int) =^(int a, int b) {
 	return a+b;
 }
 ```
-# 2.2 block和typedef
+# 2.2 block作为方法的参数
 ```objc
 
 ```
-# 2.3 block作为方法的参数
+# 2.3 block和typedef
 ```objc
 
 ```
