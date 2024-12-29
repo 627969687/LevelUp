@@ -53,11 +53,19 @@ int(^testBlock)(int, int) =^(int a, int b) {
 	completion(data, error)
 }
 ```
-# 2.3 block和typedef
+# 2.4 block作为方法的返回值
 ```objc
-typedef int (^TestBlock)(int, NSString);
 
+```
+# 2.5 block和typedef
+```objc
+typedef int (^TestBlock)(NSData *data, NSError *error);
 
+- (void)testFunc2:(TestBlock)completion {
+	NSData *data = [NSData new];
+	NSError *data = [NSError new];
+	completion(data, error)
+}
 ```
 
 # 3. 本质
