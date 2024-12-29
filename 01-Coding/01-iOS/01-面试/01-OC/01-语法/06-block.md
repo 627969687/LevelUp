@@ -43,10 +43,20 @@ int(^testBlock)(int, int) =^(int a, int b) {
 ```
 # 2.2 block作为方法的参数
 ```objc
+- (void)testFunc:(int(^)(int))testBlock {
+	 testBlock(1)
+}
 
+- (void)testFunc2:(void(^)(NSData *data, NSError *error))completion {
+	NSData *data = [NSData new];
+	NSError *data = [NSError new];
+	completion(data, error)
+}
 ```
 # 2.3 block和typedef
 ```objc
+typedef int (^TestBlock)(int, NSString);
+
 
 ```
 
